@@ -1,0 +1,22 @@
+{%extends 'layout.html'%}
+{%block title%}
+Aprendiendo Flask
+{{ super() }}
+{%endblock%}
+
+{%block content%}
+<h1>Aprendiendo Flask</h1>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="message alert-success">
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<hr/>
+<h2>Inicio</h2>
+{%include 'includes/edad.html'%}
+{%endblock%}

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <title>{% block title %}| Flask{% endblock  %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"/>
+    </head>
+    <body>
+        <header>
+            <div id="logotipo">
+    
+                <!--logo django-->
+                <img src="{{ url_for('static', filename='img/flask.png') }}">
+                <h1>Aprendiendo Flask</h1>
+                <hr/>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('crear_coche') }}">Crear coche</a></li>
+                <li><a href="{{ url_for('coches') }}">Listado de coches</a></li>
+                <li><a href="{{ url_for('informacion') }}">Informacion</a></li>
+                <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+                <li><a href="{{ url_for('lenguajes') }}">Lenguajes</a></li>
+            </ul>
+        </nav>
+        <div class="barra">
+            <span class="esquina-izquierda"></span>
+            <span class="relleno-barra"></span>
+            <span class="esquina-derecha"></span>
+        </div>
+        <div id="content">
+            <div class="box">
+                {% block content %}
+                <strong>Contenido original</strong>
+                {% endblock %}
+            </div>
+        </div>
+
+        <footer>
+            Master en python &copy - {{now.year}}
+        </footer>
+    </body>
+</html>

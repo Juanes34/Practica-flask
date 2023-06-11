@@ -1,0 +1,51 @@
+{%extends 'layout.html'%}
+{%block title%}
+Coches
+{{ super() }}
+{%endblock%}
+
+{%block content%}
+<h1>Listado de coches</h1>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="message alert-success">
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% for coche in coches%}
+    <article class="article-item">
+        <div class="data">
+            <h2>
+                <a href="{{url_for('coche',coche_id=coche.0)}}">
+                {{coche.1}}
+                </a>
+            </h2>
+            <h2>
+                <a href="">
+                {{coche.0}}
+                </a>
+            </h2>
+            <h2>
+                <a href="">
+                {{coche.2}}
+                </a>
+            </h2>
+            <h2>
+                <a href="">
+                {{coche.3}}
+                </a>
+            </h2>
+
+            <p>
+                <a href="{{url_for('editar_coche',coche_id=coche.0)}}" class="btn btn-warning">Editar</a>
+                <a href="{{url_for('borrar_coche',coche_id=coche.0)}}" class="btn btn-success">Eliminar</a>
+            </p>
+        </div>
+        <div class="clearfix"></div>
+    </article>
+{% endfor %}
+{%endblock%}
